@@ -1,10 +1,10 @@
 # Twitter Clone
 
-_material-ui_
-_firestore_
-_react flip move animations_
-_css variables_
-_flexbox_
+- _material-ui_
+- _firestore_
+- _react flip move animations_
+- _css variables_
+- _flexbox_
 
 In the project directory, you can run:
 
