@@ -4,7 +4,8 @@ import "./SidebarOption.css";
 const SidebarOption = ({text,Icon}) => {
     return (
         <div className="sidebarOption">
-            <h1>{text}</h1>
+            <Icon />
+            <h2>{text}</h2>
         </div>
     );
 };
