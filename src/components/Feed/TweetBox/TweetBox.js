@@ -1,15 +1,17 @@
 import { Button,Avatar } from '@material-ui/core';
 import Logo from "../../../images/man.png";
-import React from 'react';
+import React, { useState } from 'react';
 import "./TweetBox.css";
 
 const TweetBox = () => {
+    const [tweetMessage,setTweetMessage] = useState("");
+    const [tweetImage,setTweetMessage] = useState("");
     return (
         <div className="tweetbox">
             <form>
                 <div className="tweetbox__input">
                     <Avatar src={Logo} />
-                    <input placeholder="What's happening ? " type="text" />
+                    <input onChange={(e)=>setTweetMessage(e.target.value)} value={tweetMessage} placeholder="What's happening ? " type="text" />
                    
                 </div>
                 <input className="tweetbox__imageInput" placeholder="Optional : Enter Image Url" type="text" />
