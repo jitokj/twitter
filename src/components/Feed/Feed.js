@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Feed.css";
 import Post from './Post/Post';
 import TweetBox from './TweetBox/TweetBox';
-import Logo from "../../images/man.png";
+import db from "../../firebase";
 
 const Feed = () => {
+    const [posts,setPosts] = useState([]);
+    useEffect(()=>{
+            db.collection('posts').onSnapshot(snapshot=>(
+                setPosts(snapshot.docs.map(doc=>doc.data()))
+            ))
+    },[])
     return (
         <div className="feed">
            {/* Header */}
@@ -15,14 +21,13 @@ const Feed = () => {
             {/* tweetBox */}
                 <TweetBox />
             {/* Post */}
-            <Post displayName= "jito" userName="jitokj"
-             verified text= "🚀 yaah!!!!" avatar ={Logo} image={"https://media.giphy.com/media/dhz1gKi7WKWpW/giphy.gif"} />
-             <Post displayName= "jito" userName="jitokj"
-             verified text= "🚀 yaah!!!!" avatar ={Logo} image={"https://media.giphy.com/media/dhz1gKi7WKWpW/giphy.gif"} />
-              <Post displayName= "jito" userName="jitokj"
-             verified text= "🚀 yaah!!!!" avatar ={Logo} image={"https://media.giphy.com/media/dhz1gKi7WKWpW/giphy.gif"} />
+        {posts.map(post=>(
+            <Post key={`${post.displayName}-${post.userName}`} displayName={post.displayName} userName={post.userName}
+             avatar={post.avatar} verified={post.verified} image={post.image} text={post.text} />
+        ))}
         </div>
     );
 };
 
 export default Feed;
+
