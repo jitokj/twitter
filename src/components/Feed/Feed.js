@@ -4,6 +4,7 @@ import Post from './Post/Post';
 import TweetBox from './TweetBox/TweetBox';
 import db from "../../firebase";
 import FlipMove from "react-flip-move";
+import Sparkle from "../../images/sparkles.png";
 
 const Feed = () => {
     const [posts,setPosts] = useState([]);
@@ -20,12 +21,14 @@ const Feed = () => {
            {/* Header */}
            <div className="feed__header">
            <h2>Home</h2>
+           <img src={Sparkle} alt=""/>
            </div>
            
             {/* tweetBox */}
                 <TweetBox />
             {/* Post */}
-            <FlipMove>
+            <FlipMove easing="cubic-bezier(1, 0, 0, 1)" 
+             enterAnimation="accordionVertical" leaveAnimation="accordionVertical" >
         {posts.map(post=>(
             <Post key={post.id} displayName={post.displayName} userName={post.userName}
              avatar={post.avatar} verified={post.verified} image={post.image} text={post.text} />
