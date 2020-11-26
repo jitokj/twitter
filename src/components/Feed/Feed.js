@@ -9,7 +9,10 @@ const Feed = () => {
     const [posts,setPosts] = useState([]);
     useEffect(()=>{
             db.collection('posts').onSnapshot(snapshot=>(
-                setPosts(snapshot.docs.map(doc=>doc.data()))
+                setPosts(snapshot.docs.map(doc=>{
+                   let newdata = doc.data();
+                   newdata.id = doc.id;
+                    return newdata}))
             ))
     },[])
     return (
@@ -24,7 +27,7 @@ const Feed = () => {
             {/* Post */}
             <FlipMove>
         {posts.map(post=>(
-            <Post key={`${post.displayName}-${post.userName}`} displayName={post.displayName} userName={post.userName}
+            <Post key={post.id} displayName={post.displayName} userName={post.userName}
              avatar={post.avatar} verified={post.verified} image={post.image} text={post.text} />
         )).reverse()}
         </FlipMove>

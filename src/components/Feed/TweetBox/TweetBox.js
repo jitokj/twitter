@@ -1,5 +1,5 @@
 import { Button,Avatar } from '@material-ui/core';
-import Logo from "../../../images/man.png";
+import Logo from "../../../images/man.jpg";
 import React, { useState } from 'react';
 import "./TweetBox.css";
 import db from "../../../firebase";
