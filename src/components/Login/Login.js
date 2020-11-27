@@ -2,7 +2,12 @@ import React from 'react';
 import "./Login.css";
 import TwitterIcon from '@material-ui/icons/Twitter';
 import firebase from "firebase";
+import { useStateValue } from '../../provider/StateProvider';
+
 const Login = () => {
+
+    const [{photoUrl,token,displayName},dispatch] = useStateValue();
+
     var provider = new firebase.auth.TwitterAuthProvider();
     return (
         <div className="login">
@@ -16,6 +21,12 @@ const Login = () => {
     var user = result.user;
     console.log("👿>>",user.photoURL);
     console.log("token",token);
+    dispatch({
+        type: "ADD_USER",
+        photoURL: user.photoURL,
+        token: token,
+        displayName: user.displayName
+    })
     // ...
   }).catch(function(error) {
     // Handle Errors here.

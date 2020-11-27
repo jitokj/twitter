@@ -1,15 +1,18 @@
 export const initialState = {
-    photoUrl: null,
-    displayName: null
+    photoUrl: "",
+    displayName: "",
+    token: ""
 }
 
 const reducer = (state,action)=>{
+    console.log("😄",action);
     switch(action.type){
         case "ADD_USER":
             return {
                 ...state,
                 photoUrl: action.photoUrl,
-                displayName: action.displayName
+                displayName: action.displayName,
+                token: action.token
             }
     }
 }
