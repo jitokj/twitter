@@ -1,0 +1,28 @@
+.login {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.login__icon {
+  color: var(--twitter-color);
+  font-size: 110px !important;
+  margin: 2rem;
+}
+
+input[type="image"]:focus {
+  border: none;
+  outline: none;
+}
+
+h5 {
+  text-align: right;
+  padding-top: 5rem;
+  margin-top: 5rem;
+  opacity: 0.5;
+  z-index: 100;
+}

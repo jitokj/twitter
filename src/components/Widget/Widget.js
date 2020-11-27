@@ -21,8 +21,9 @@ const Widget = () => {
            <TwitterTimelineEmbed  sourceType="profile"
             screenName={screenID[Math.floor(Math.random() * screenID.length)]} noScrollbar placeholder="Loading....😎" options={{height: 300}} />
            <TwitterShareButton  url={"https://twitter.com/reactjs"} options={{text:"Reactjs is awesome",via:"jitokj"}} />
+          
        </div>
-            
+          
         </div>
     );
 };
