@@ -4,6 +4,7 @@ import Feed from "./components/Feed/Feed";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Widget from "./components/Widget/Widget";
 import Login from "./components/Login/Login";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 
 
 function App() {
@@ -11,15 +12,27 @@ function App() {
  
   
   return (
+    <Router>
+   
+    <Switch>
+  
+    <Route path="/home" exact>
     <div className="app">
-    <Login />
      {/* sidebar */}
-     {/* <Sidebar /> */}
+     <Sidebar />
      {/* feed */}
-     {/* <Feed /> */}
+     <Feed />
       {/* widget */}
-     {/* <Widget />  */}
-    </div>
+     <Widget /> 
+     </div>
+     </Route>
+   
+     <Route path="/" exact>
+    <Login />
+    </Route>
+     </Switch>
+    
+    </Router>
   );
 }
 
