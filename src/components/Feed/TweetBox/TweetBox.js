@@ -3,19 +3,23 @@ import Logo from "../../../images/man.jpg";
 import React, { useState } from 'react';
 import "./TweetBox.css";
 import db from "../../../firebase";
+import {useStateValue} from "../../../provider/StateProvider";
 
 const TweetBox = () => {
     const [tweetMessage,setTweetMessage] = useState("");
     const [tweetImage,setTweetImage] = useState("");
+    const [{photoUrl,token,displayName}] = useStateValue();
+    console.log("displayName>>",displayName);
+    console.log("photo>>",photoUrl);
     const sendTweet = (e)=>{
         e.preventDefault();
         db.collection('posts').add({
-            displayName: 'JITO K J',
-            userName: 'jitokj',
+            displayName: displayName,
+            userName: displayName,
             verified: true,
             text: tweetMessage,
             image: tweetImage,
-            avatar: "https://img.icons8.com/ultraviolet/40/000000/select-user.png"
+            avatar: photoUrl
 
         })
         setTweetImage("");

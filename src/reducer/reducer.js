@@ -10,7 +10,7 @@ const reducer = (state,action)=>{
         case "ADD_USER":
             return {
                 ...state,
-                photoUrl: action.photoUrl,
+                photoUrl: action.photoURL,
                 displayName: action.displayName,
                 token: action.token
             }
